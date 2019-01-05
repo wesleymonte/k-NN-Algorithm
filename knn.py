@@ -8,23 +8,6 @@ from myutil import paths
 import argparse
 import numpy as np
 
-def reshapeImages(Images):
-    return np.array([i.reshape(1, 3072) if i is not None else '' for i in Images])
-
-def numOfNones(List):
-    num = 0
-    for e in List:
-        if e is None: num+=1
-    return num
-
-def removeNones(List=[]):
-    removeIndexs = []
-    for i in range(len(List)):
-        if List[i] is None:
-            removeIndexs.append(i)
-    return np.delete(List, removeIndexs)
-
-
 ap = argparse.ArgumentParser()
 ap.add_argument("-d", "--dataset", required=True,
                 help="Path to input dataset")
