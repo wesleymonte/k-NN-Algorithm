@@ -6,7 +6,6 @@ from preprocessing.SimplePreprocessor import SimplePreprocessor
 from datasets.SimpleDatasetLoader import SimpleDatasetLoader
 from myutil import paths
 import argparse
-import numpy as np
 
 ap = argparse.ArgumentParser()
 ap.add_argument("-d", "--dataset", required=True,
@@ -33,8 +32,6 @@ labels = le.fit_transform(labels)
 (trainX, testX, trainY, testY) = train_test_split(data, labels, test_size=0.25, random_state=42)
 
 print("[INFO] evaluation k-NN classifier...")
-print(data.shape)
-print(labels.shape)
 model = KNeighborsClassifier(n_neighbors=args["neighbors"], n_jobs=args["jobs"])
 model.fit(trainX, trainY)
 print(classification_report(testY, model.predict(testX),
